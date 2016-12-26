@@ -6,3 +6,5 @@ The repo is still under development
 
 #### Stuff used to make this:
  * [Buttons 2.0](https://github.com/alexwolfe/Buttons/) CSS library
+ * [loading.io](http://loading.io/) loading icons buider
+ * [toastr](https://github.com/CodeSeven/toastr) modern alert CSS library
