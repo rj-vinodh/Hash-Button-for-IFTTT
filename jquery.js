@@ -12,6 +12,8 @@ function E()
 }E();*/
 
  d = document;
+ var diShowAlert=$("<div/>");
+var innerDiv=$("<div/>");
  var styEdit = $("<style/>");
 var styDelete = $("<style/>");
 function createStyleEditTd(){
@@ -365,8 +367,7 @@ var d=$("#status").attr("order");
 ++d;
 
 insertStatus(d);}
-var diShowAlert=$("<div>");
-var innerDiv=$("<div>");
+
 function showAlert(insideAlert){
 diShowAlert.attr("id","alertBoxOuter");
 diShowAlert.attr( "style","position: absolute;top: 0px;left: 0px;bottom: 0px;right: 0px;background: rgba(2, 2, 2, 0.62);z-index: 36846;");
