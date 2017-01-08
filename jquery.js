@@ -166,7 +166,7 @@ $("[id='howToButton']").click(function(event){
 	
 	/* location.href="new 23.html"; */
 	window.open(
-  'https://support.wwf.org.uk/earth_hour/index.php?type=individual',
+  'http://www.makeuseof.com/tag/ifttt-connect-anything-maker-channel/',
   '_blank' // <- This is what makes it open in a new window.
 );
 	
