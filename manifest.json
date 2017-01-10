@@ -11,6 +11,6 @@
   },
   
   "permissions": [
-   "https://maker.ifttt.com/*"
+   "https://maker.ifttt.com/*","tabs"
    ]
 }
