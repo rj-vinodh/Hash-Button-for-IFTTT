@@ -87,7 +87,7 @@ function save(){
 	var eventName=$("#event_name_input").val();
 	if(key!=""&&eventName!="")
 	{localStorage.Mkey=$("#key").val();
-	alert("local Storage :"+localStorage.eventNames)
+	//alert("local Storage :"+localStorage.eventNames)
 	
 	localStorage.eventNames=(localStorage.eventNames||"")+"("+eventName+"?"+$("#value1").val()
 	+")"+$("#value2").val()+")"+$("#value3").val();
@@ -166,11 +166,8 @@ $("[id='editButton']").click(function(event){editButton(event)});
 
 $("[id='howToButton']").click(function(event){
 	
-	/* location.href="new 23.html"; */
-	window.open(
-  'http://www.makeuseof.com/tag/ifttt-connect-anything-maker-channel/',
-  '_blank' // <- This is what makes it open in a new window.
-);
+	chrome.tabs.create({ url: "http://www.makeuseof.com/tag/ifttt-connect-anything-maker-channel/" })
+	
 	
 });
 
@@ -218,9 +215,9 @@ else{
 temp=tempTar.value;
 removeButton(temp);
 
-alert(temp);
+//alert(temp);
 var n=temp.split("?");
-alert("n :"+n[1]);
+//alert("n :"+n[1]);
 var va=n[1].split(')');
 $("#event_name_input").val(n[0]);
 $("#value1").val(va[0]);	
