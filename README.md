@@ -1,5 +1,5 @@
 # IFTTT-Chrome-Buttons
-Y not create a chrome IFTTT DO button ??
+This extension's functianality is same as that of an IFTTT DO button but in chrome
 
 ## How it works ?
 The extension makes use of IFTTT maker channel
