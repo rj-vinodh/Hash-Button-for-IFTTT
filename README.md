@@ -1,4 +1,4 @@
-# IFTTT-Chrome-Buttons
+# IFTTT-Chrome-Buttons ![alt text](https://raw.githubusercontent.com/rj-vinodh/IFTTT-Chrome-Buttons/master/v2.png "Logo Title Text 1")
 This extension's functianality is same as that of an IFTTT DO button but in chrome
 
 ## How it works ?
