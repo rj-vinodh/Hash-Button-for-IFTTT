@@ -1,4 +1,4 @@
-# IFTTT-Chrome-Buttons 
+# IFTTT-Chrome-Buttons ![](http://i.imgur.com/Ssfp7.gif)
 This extension's functianality is same as that of an IFTTT DO button but in chrome
 
 ## How it works ?
