@@ -1,4 +1,4 @@
-# IFTTT-Chrome-Buttons ![](https://raw.githubusercontent.com/rj-vinodh/IFTTT-Chrome-Buttons/master/v2.png| width=50)
+# IFTTT-Chrome-Buttons ![](https://raw.githubusercontent.com/rj-vinodh/IFTTT-Chrome-Buttons/master/v2.png =50x50)
 This extension's functianality is same as that of an IFTTT DO button but in chrome
 
 ## How it works ?
