@@ -8,21 +8,21 @@
 
 4. From the account info section you can see there are three lines which describes your username, your URL link and your status.The moment when you connect to maker channel it will generate a unique key.You can get the key from the URL link which is at last of the link.
 
-Account info image
-For example,the key from the url https://maker.ifttt.com/use/cAFsrJxxxxxxxxxxxA4kRI is **cAFsrJxxxxxxxxxxxA4kRI**
+![Account info image](account.png)
+For example,the key from the url https://maker.ifttt.com/use/cAFsrJxxxxxxxxxxxx4kRI is **cAFsrJxxxxxxxxxxxx4kRI**
 
     Everytime you disconnect and connect your maker your key gets changed
 
 **PLEASE DONT SHARE YOUR KEY**
 
 ### Quick overview of connection to maker in slides
-
+![slide1](slide1.gif)
 
 ## Creating Applet
 For example, I will create a recipe which sends me mail whenever the event is triggered.
 Go to [**IFTTT**](https://ifttt.com/discover) home page and go to myapplet and click on new applet.The screen will present with the following which is basically **if this happens do that**.
 
-ifttt image
+![ifttt image](ifttt.png)
 ### Part - 1 (this part)
 
 1. Click on **this** to get started with applet creation.
@@ -33,7 +33,7 @@ ifttt image
 
 4. The moment you click on **recieve a web request** it will ask for the **event name**. Give any name and click **create trigger**.
 
-ifttt image 2
+![ifttt image 2](ifttt2.png)
 ### Part - 2 (that part)
 
 1. Click on **that**.
@@ -48,8 +48,8 @@ ifttt image 2
 
 6. The final screen will display the description of the recipe.click on **finish** to create the recipe.**The selection can be changed at anytime by clicking back button on the top left corner of the screen**.
 
-Quick overview of creation of applet in slides
-
+### Quick overview of creation of applet in slides
+![Applet Overview](slide2.gif)
 ## Extension guide
 1. Click on extension icon and select `I have key & event name`
 
@@ -60,7 +60,8 @@ Quick overview of creation of applet in slides
 4. click on the `button`
 
 ***Voila! you will get mail to your registered mail Id.***
-Quick overview of Extension in slides
+### Quick overview of Extension in slides
+![Extension Overview](slide3.gif)
 
 ## Conclusion
 And that's it, you are now ready to get going with IFTTT and maker channel. Share your recipes on reddit and the forums.Help us out to improve our chrome extension.
