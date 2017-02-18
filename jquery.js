@@ -141,7 +141,7 @@ $("[id='editButton']").click(function(event){editButton(event)});
 
 $("[id='howToButton']").click(function(event){
 	
-	chrome.tabs.create({ url: "http://www.makeuseof.com/tag/ifttt-connect-anything-maker-channel/" })
+	chrome.tabs.create({ url: "https://rj-vinodh.github.io/IFTTT-Chrome-Buttons/" })
 	
 	
 });
