@@ -3,7 +3,8 @@ This extension's functianality is same as that of an IFTTT DO button but in chro
 
 ## How it works ?
 The extension makes use of IFTTT maker channel
-
+## How to use ?
+[IFTTT Chrome Button](https://rj-vinodh.github.io/IFTTT-Chrome-Buttons/)
 
 
 #### Stuff used to make this:
