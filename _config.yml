@@ -1,3 +1,5 @@
 theme: jekyll-theme-dinky
 title: IFTTT Chrome Buttons
 google_analytics: UA-67475585-2
+gems:
+  - jekyll-seo-tag
