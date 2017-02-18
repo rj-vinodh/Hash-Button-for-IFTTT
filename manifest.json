@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "IFTTT Chrome Button - unofficial",
-  "description": "virtual 'IFTTT DO' buttons for chrome,This extension is not affiliated with IFTTT",
+  "description": "Virtual 'IFTTT DO' buttons for chrome,we are not affiliated with IFTTT.",
   "version": "1.2",
 
   "browser_action": {
