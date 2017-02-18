@@ -1,6 +1,6 @@
 # Getting started
 ## Install IFTTT Chrome Button
-* [Click on **ADD To CHROME**](https://chrome.google.com/webstore/detail/ifttt-chrome-button-unoff/komgjgehifckemhnghbjkecolfamhhpb)
+* [Click on **ADD TO CHROME**](https://chrome.google.com/webstore/detail/ifttt-chrome-button-unoff/komgjgehifckemhnghbjkecolfamhhpb)
 * Click on **Add extension**
 
 ## Connection to maker
