@@ -4,3 +4,4 @@ description: chrome extension which has a functionality of IFTTT do button
 google_analytics: UA-67475585-2
 gems:
   - jekyll-seo-tag
+  - jekyll-sitemap
