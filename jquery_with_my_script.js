@@ -101,6 +101,7 @@ function save(){
 		var emptyField=(key!="")?"fill Event name":"fill key";
 		var mg='<div style="height: 126px;width: 100%;margin-top: -64px;margin-left: -50%;position: absolute;top: 50%;left: 50%;background: white;"><div><button id="mandatory" class="button button-3d" style="font-size: inherit;width: 90%; margin-top: 6px; margin-left: 10px;">'+emptyField+'</button><p style="position: relative;top: 4px;text-align: center;">(OR)</p><button id="HowToB" class="button button-3d"  style="margin-left: 10px;font-size: inherit;width: 90%;/* left: 10%; */padding-left: 14px;padding-right: 14px;">How to Get...!</button></div></div>';
 		showAlert(mg);
+		addEventHowToButtonPress();
 		$("#mandatory").click(function(){
 			if($(this).html().indexOf("key") == -1)
 			{
