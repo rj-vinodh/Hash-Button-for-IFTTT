@@ -60,6 +60,13 @@ $("#addButtons").on("click",function(){
 
 $("#key").val((localStorage.Mkey||""));
 });
+
+$("[id='howToButton']").click(function(event){
+	
+	chrome.tabs.create({ url: "https://rj-vinodh.github.io/IFTTT-Chrome-Buttons/" })
+	
+	
+});
 function clear(){
 	
 $("#event_name_input").val("");
@@ -139,12 +146,7 @@ function re(){
 
 $("[id='editButton']").click(function(event){editButton(event)});
 
-$("[id='howToButton']").click(function(event){
-	
-	chrome.tabs.create({ url: "https://rj-vinodh.github.io/IFTTT-Chrome-Buttons/" })
-	
-	
-});
+
 
 
  
@@ -251,6 +253,19 @@ $("#moveLeft").click( function (){left()});
 	
 	$("#moveRight").click( function (){right()});
 	
+
+function whenButtonEmpty(){
+	
+	switchView();
+		var ma='<div style="height: 126px;width: 100%;margin-top: -64px;margin-left: -50%;position: absolute;top: 50%;left: 50%;background: white;"><div><button id="HowToB" class="button button-3d"  style="margin-left: 10px;font-size: inherit;width: 90%;/* left: 10%; */padding-left: 14px;padding-right: 14px;">Easy tutorial...!</button><p style="position: relative;top: 4px;text-align: center;">(OR)</p><button id="Ihave" class="button button-3d" style="padding-right: 5.6px;padding-left: 5.6px;font-size: inherit;width: 90%;margin-top: 6px;margin-left: 10px;padding-right: 10.6;padding-left: 5.6;">I have key & Event Name</button></div></div>';
+		showAlert(ma);
+		addEventHowToButtonPress();
+		$("#Ihave").click(removeShowAlert);
+
+}
+
+
+
 	
 function createButton(){
 	if(localStorage.eventNames){
@@ -270,17 +285,18 @@ function createButton(){
 	}
 	if(ButtonEmpty)
 	{
-		switchView();
-		var ma='<div style="height: 126px;width: 100%;margin-top: -64px;margin-left: -50%;position: absolute;top: 50%;left: 50%;background: white;"><div><button id="HowToB" class="button button-3d"  style="margin-left: 10px;font-size: inherit;width: 90%;/* left: 10%; */padding-left: 14px;padding-right: 14px;">Easy tutorial...!</button><p style="position: relative;top: 4px;text-align: center;">(OR)</p><button id="Ihave" class="button button-3d" style="padding-right: 5.6px;padding-left: 5.6px;font-size: inherit;width: 90%;margin-top: 6px;margin-left: 10px;padding-right: 10.6;padding-left: 5.6;">I have key & Event Name</button></div></div>';
-		showAlert(ma);
-		addEventHowToButtonPress();
-		$("#Ihave").click(removeShowAlert);
-
+		whenButtonEmpty();
 }
 	addListners();
 	re();
+	}else{
+		
+		whenButtonEmpty();
 	}
-}createButton();
+
+	
+	
+	}createButton();
 
     var fired = [];
     
