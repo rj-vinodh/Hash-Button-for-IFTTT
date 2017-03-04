@@ -1,4 +1,8 @@
 # Getting started
+
+## Intresting Links
+* http://www.makeuseof.com/tag/9-easy-ifttt-button-tricks-quickly-automate-life/
+
 ## Install IFTTT Chrome Button
 * [Click on **ADD TO CHROME**](https://chrome.google.com/webstore/detail/ifttt-chrome-button-unoff/komgjgehifckemhnghbjkecolfamhhpb)
 * Click on **Add extension**
