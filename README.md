@@ -1,4 +1,4 @@
-#### Intresting Tips
+#### IFTTT Chrome Button Intresting Tips
 * [makeuseof.com 9-easy-ifttt-button-tricks-quickly-automate-life](http://www.makeuseof.com/tag/9-easy-ifttt-button-tricks-quickly-automate-life/)
 * [gizmodo.com 15-clever-recipes-to-try-with-ifttts-new-do-apps-1686946276](http://fieldguide.gizmodo.com/15-clever-recipes-to-try-with-ifttts-new-do-apps-1686946276)
 
