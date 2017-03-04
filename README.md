@@ -1,7 +1,8 @@
 # How to setup IFTTT Chrome Button ?
 
 #### Intresting Tips
-* [9-easy-ifttt-button-tricks-quickly-automate-life](http://www.makeuseof.com/tag/9-easy-ifttt-button-tricks-quickly-automate-life/)
+* [makeuseof.com 9-easy-ifttt-button-tricks-quickly-automate-life](http://www.makeuseof.com/tag/9-easy-ifttt-button-tricks-quickly-automate-life/)
+* [gizmodo.com 15-clever-recipes-to-try-with-ifttts-new-do-apps-1686946276](http://fieldguide.gizmodo.com/15-clever-recipes-to-try-with-ifttts-new-do-apps-1686946276)
 
 ## Install IFTTT Chrome Button
 * [Click on **ADD TO CHROME**](https://chrome.google.com/webstore/detail/ifttt-chrome-button-unoff/komgjgehifckemhnghbjkecolfamhhpb)
