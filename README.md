@@ -8,7 +8,7 @@
 * [Click on **ADD TO CHROME**](https://chrome.google.com/webstore/detail/ifttt-chrome-button-unoff/komgjgehifckemhnghbjkecolfamhhpb)
 * Click on **Add extension**
 
-## How to use IFTTT maker channel ?
+## How to setup IFTTT maker channel ?
 1. Login to your [**IFTTT**](https://ifttt.com/discover) account and search for the **maker** channel. You can also get there by visiting [ifttt.com/maker](https://ifttt.com/maker).
 
 2. You can see the description of the maker channel along with a connect button in it. Go head and click on **connect**. You will get a page consisting of some descriptions about triggers and actions
