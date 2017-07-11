@@ -24,8 +24,8 @@ For example,the key from the url https://maker.ifttt.com/use/cAFsrJxxxxxxxxxxxx4
 
 **PLEASE DONT SHARE YOUR KEY**
 
-[//]: # ( ### Quick overview of connection to Webhooks in slides
-![slide1](slide1.gif) )
+### Quick overview of connection to Webhooks in slides
+![slide1](slide1.gif) 
 
 ## Creating Applet
 For example, I will create a recipe which sends me mail whenever the event is triggered.
