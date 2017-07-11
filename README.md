@@ -20,7 +20,7 @@
 ![Account info image](account.png)
 For example,the key from the url https://maker.ifttt.com/use/cAFsrJxxxxxxxxxxxx4kRI is **cAFsrJxxxxxxxxxxxx4kRI**
 
-    Everytime you disconnect and connect your maker your key gets changed
+    Everytime you disconnect and connect your Webhooks your key gets changed
 
 **PLEASE DONT SHARE YOUR KEY**
 
