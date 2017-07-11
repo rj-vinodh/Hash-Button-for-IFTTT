@@ -8,14 +8,14 @@
 * [Click on **ADD TO CHROME**](https://chrome.google.com/webstore/detail/ifttt-chrome-button-unoff/komgjgehifckemhnghbjkecolfamhhpb)
 * Click on **Add extension**
 
-## How to setup IFTTT maker channel ?
-1. Login to your [**IFTTT**](https://ifttt.com/discover) account and search for the **maker** channel. You can also get there by visiting [ifttt.com/maker](https://ifttt.com/maker).
+## How to setup IFTTT Webhooks channel ?
+1. Login to your [**IFTTT**](https://ifttt.com/discover) account and search for the **Webhooks** channel. You can also get there by visiting [ifttt.com/maker](https://ifttt.com/maker).
 
-2. You can see the description of the maker channel along with a connect button in it. Go head and click on **connect**. You will get a page consisting of some descriptions about triggers and actions
+2. You can see the description of the Webhooks channel along with a connect button in it. Go head and click on **connect**. You will get a page consisting of some descriptions about triggers and actions
 
 3. Go to **setting** in that page where you can see your account informations
 
-4. From the account info section you can see there are three lines which describes your username, your URL link and your status.The moment when you connect to maker channel it will generate a unique key.You can get the key from the URL link which is at last of the link.
+4. From the account info section you can see there are three lines which describes your username, your URL link and your status.The moment when you connect to Webhooks channel it will generate a unique key.You can get the key from the URL link which is at last of the link.
 
 ![Account info image](account.png)
 For example,the key from the url https://maker.ifttt.com/use/cAFsrJxxxxxxxxxxxx4kRI is **cAFsrJxxxxxxxxxxxx4kRI**
@@ -24,7 +24,7 @@ For example,the key from the url https://maker.ifttt.com/use/cAFsrJxxxxxxxxxxxx4
 
 **PLEASE DONT SHARE YOUR KEY**
 
-### Quick overview of connection to maker in slides
+### Quick overview of connection to Webhooks in slides
 ![slide1](slide1.gif)
 
 ## Creating Applet
@@ -36,7 +36,7 @@ Go to [**IFTTT**](https://ifttt.com/discover) home page and go to myapplet and c
 
 1. Click on **this** to get started with applet creation.
 
-2. You will be displayed with lot of channels. Go head and search for **maker** and select it
+2. You will be displayed with lot of channels. Go head and search for **Webhooks** and select it
 
 3. Choose **trigger** page will get displayed along with recieve a web request on the leftside
 
@@ -73,4 +73,15 @@ Go to [**IFTTT**](https://ifttt.com/discover) home page and go to myapplet and c
 ![Extension Overview](slide3.gif)
 
 ## Conclusion
-And that's it, you are now ready to get going with IFTTT and maker channel. Share your recipes on reddit and the forums.Help us out to improve our chrome extension.
+And that's it, you are now ready to get going with IFTTT and 
+
+
+
+
+
+
+
+
+
+
+channel. Share your recipes on reddit and the forums.Help us out to improve our chrome extension.
