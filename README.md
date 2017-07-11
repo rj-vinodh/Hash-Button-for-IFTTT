@@ -5,7 +5,7 @@ This extension's functionality is same as that of an IFTTT DO button but in chro
 * Click on **Add extension**
 
 ## How it works ?
-The extension makes use of IFTTT maker channel
+The extension makes use of IFTTT Webhooks channel
 ## How to use ?
 [IFTTT Chrome Button](https://rj-vinodh.github.io/IFTTT-Chrome-Buttons/)
 
