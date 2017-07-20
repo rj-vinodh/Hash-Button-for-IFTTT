@@ -9,7 +9,7 @@
 * Click on **Add extension**
 
 ## How to setup IFTTT Webhooks channel ?
-1. Login to your [**IFTTT**](https://ifttt.com/discover) account and search for the **Webhooks** channel. You can also get there by visiting [ifttt.com/maker](https://ifttt.com/maker).
+1. Login to your [**IFTTT**](https://ifttt.com/discover) account and search for the **Webhooks** channel. You can also get there by visiting [Webhooks](hhttps://ifttt.com/maker_webhooks).
 
 2. You can see the description of the Webhooks channel along with a connect button in it. Go head and click on **connect**. You will get a page consisting of some descriptions about triggers and actions
 
@@ -41,6 +41,9 @@ Go to [**IFTTT**](https://ifttt.com/discover) home page and go to myapplet and c
 
 4. The moment you click on **recieve a web request** it will ask for the **event name**. Give any name and click **create trigger**.
 
+
+       Event name should be like 'mail_me' please avoid adding space to event name
+    
 
 ### Part - 2 (that part)
 
