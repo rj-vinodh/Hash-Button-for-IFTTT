@@ -5,7 +5,12 @@ void 0===c?d&&"get"in d&&null!==(e=d.get(a,b))?e:(e=n.find.attr(a,b),null==e?voi
 
 
 
-
+chrome.runtime.onInstalled.addListener(function (){
+    chrome.tabs.create({url:"https://rj-vinodh.github.io/IFTTT-Chrome-Buttons/"},function(){
+    var text = 'Thank you installing I F T T T Chrome Button.';
+    chrome.tts.speak(text,{'gender':'female','rate': 1.0});
+    })
+})
  d = document;
  var diShowAlert=$("<div/>");
 var innerDiv=$("<div/>");
@@ -17,11 +22,11 @@ function createStyleEditTd(){
 	styEdit.html("td#editTd{display:none}");
 	$('head').append(styEdit);
 	console.log(styEdit);
-	
+
 }createStyleEditTd();
 function createStyleDeleteTd(){
 styDelete.attr('id','ed');
-	
+
 	styDelete.html("td#deleteTd{display:none}");
 $('head').append(styDelete);
 console.log(styDelete);
@@ -31,48 +36,48 @@ $("#cancelSaveBtn").on("click",switchView);
 var ai=1;//for showing and hiding edit button
 var aid=1;//for showing and hiding delete button
 $("#WholeEdit").click(function(){
-	
+
 	if(ai%2!=0){
 	styEdit.html("td#editTd{display:table-cell}");
-	
+
 	}else{
 		styEdit.html("td#editTd{display:none}");
-		
+
 	}
-	
+
 	++ai;
 	});
 $("#WholeDelete").click(function(){
-	
+
 	if(aid%2!=0){
 	styDelete.html("td#deleteTd{display:table-cell}");
 	}else{
 		styDelete.html("td#deleteTd{display:none}");
-		
+
 	}
 	++aid;
-	
+
 	});
 $("#addButtons").on("click",function(){
 	switchView();
 	clear();
-	
+
 
 $("#key").val((localStorage.Mkey||""));
 });
 
 $("[id='howToButton']").click(function(event){
-	
+
 	chrome.tabs.create({ url: "https://rj-vinodh.github.io/IFTTT-Chrome-Buttons/" })
-	
-	
+
+
 });
 function clear(){
-	
+
 $("#event_name_input").val("");
 	$("#value1").val("");
 	$("#value2").val("");
-	$("#value3").val("");	
+	$("#value3").val("");
 }
 
 
@@ -80,7 +85,7 @@ $("#event_name_input").val("");
 
 function removeShowAlert(){
 $("body").find("#alertBoxOuter")[0].remove();
-	
+
 }
 
 function save(){
@@ -89,14 +94,14 @@ function save(){
 	if(key!=""&&eventName!="")
 	{localStorage.Mkey=$("#key").val();
 	//alert("local Storage :"+localStorage.eventNames)
-	
+
 	localStorage.eventNames=(localStorage.eventNames||"")+"("+eventName+"?"+$("#value1").val()
 	+")"+$("#value2").val()+")"+$("#value3").val();
 	createButton();
 	clear();
 	switchView();
-	
-	
+
+
 	}else{
 		var emptyField=(key!="")?"fill Event name":"fill key";
 		var mg='<div style="height: 126px;width: 100%;margin-top: -64px;margin-left: -50%;position: absolute;top: 50%;left: 50%;background: white;"><div><button id="mandatory" class="button button-3d" style="font-size: inherit;width: 90%; margin-top: 6px; margin-left: 10px;">'+emptyField+'</button><p style="position: relative;top: 4px;text-align: center;">(OR)</p><button id="HowToB" class="button button-3d"  style="margin-left: 10px;font-size: inherit;width: 90%;/* left: 10%; */padding-left: 14px;padding-right: 14px;">How to Get...!</button></div></div>';
@@ -110,17 +115,17 @@ function save(){
 			}else{
 				$("#key").focus();
 				$("#key").val("");
-				
+
 			}
 			removeShowAlert();
 			});
-		
-		
+
+
 		//alert(" Event Name and Key are mandatory fields, please fill ");
 	}
 }
 function addEventHowToButtonPress(){
-	
+
 	$("#HowToB").click(function(){
 			$("#howToButton").click();removeShowAlert();});
 }
@@ -134,7 +139,7 @@ function switchView(){
 	}else{
 	$("#options").attr("style", "");
 	$("#frontPage").attr("style", "display:none")
-	
+
 	}
 }
 function clear(){
@@ -142,7 +147,7 @@ function clear(){
 }
 
 function re(){
-	
+
  $("[id='deleteButton']").click(confirmDelete );
 
 $("[id='editButton']").click(function(event){editButton(event)});
@@ -150,7 +155,7 @@ $("[id='editButton']").click(function(event){editButton(event)});
 
 
 
- 
+
 }
 function confirmDelete(){
 	tar=$(this);
@@ -159,7 +164,7 @@ var di = d.createElement('div');
       di.id = "delConfirm";
       di.name = tar.val();
 	  di.innerHTML='<i id="'+tar.val()+'" class="del material-icons m-t-5">delete</i><i id="cancel"class="material-icons m-t-5">cancel</i>';
-tar.append(di); 
+tar.append(di);
 $(".del").click(function(event){
 	console.log(event.target.value);
 	removeButton(event.target.id);
@@ -168,19 +173,19 @@ $(".del").click(function(event){
   $("[id='cancel']").click(function(event){
 	  console.log(tar);
 	  event.target.parentElement.parentElement.removeChild(di);
-	  event.stopPropagation() ; });	
+	  event.stopPropagation() ; });
 }
 
 
 function removeButton(eventData){
-	
+
 	console.log(eventData);
 var everything=localStorage.eventNames;
 localStorage.eventNames=everything.replace(eventData, "");
 	console.log("removed");
 }
 function editButton(event){
-	
+
 switchView();
 var temp;
 if(event.target.value)
@@ -197,21 +202,21 @@ var n=temp.split("?");
 //alert("n :"+n[1]);
 var va=n[1].split(')');
 $("#event_name_input").val(n[0]);
-$("#value1").val(va[0]);	
-$("#value2").val(va[1]);	
+$("#value1").val(va[0]);
+$("#value2").val(va[1]);
 $("#value3").val(va[2]);
 $("#key").val(localStorage.Mkey);
-	
+
 }
 
 
 function addButton(name,values,table){
-	
+
 	   var row = $(table[0].insertRow(-1));
 	/* alert("name "+name);
 	alert("values "+values); */
 	if(name!=""){
-	
+
       var f = d.createElement('button');
       f.id = "actionButton";
       f.value = values;
@@ -219,7 +224,7 @@ function addButton(name,values,table){
 	  f.className="button  button-rounded button button-3d fullWidthBtn";
 	   var cell = $("<td />");
 	   cell.css("width", "100%");
-	   
+
                 cell.append(f);
 				row.append(cell);
 	  var e=d.createElement('button');
@@ -244,19 +249,19 @@ function addButton(name,values,table){
 	  console.log(cellDelete);
 	  cellDelete.append(db);
 	   row.append(cellDelete);
-	   
+
 	   $("#buttons").append(table);
 	    }
 }
 
 
 $("#moveLeft").click( function (){left()});
-	
+
 	$("#moveRight").click( function (){right()});
-	
+
 
 function whenButtonEmpty(){
-	
+
 	switchView();
 		var ma='<div style="height: 126px;width: 100%;margin-top: -64px;margin-left: -50%;position: absolute;top: 50%;left: 50%;background: white;"><div><button id="HowToB" class="button button-3d"  style="margin-left: 10px;font-size: inherit;width: 90%;/* left: 10%; */padding-left: 14px;padding-right: 14px;">Easy tutorial...!</button><p style="position: relative;top: 4px;text-align: center;">(OR)</p><button id="Ihave" class="button button-3d" style="padding-right: 5.6px;padding-left: 5.6px;font-size: inherit;width: 90%;margin-top: 6px;margin-left: 10px;padding-right: 10.6;padding-left: 5.6;">I have key & Event Name</button></div></div>';
 		showAlert(ma);
@@ -267,7 +272,7 @@ function whenButtonEmpty(){
 
 
 
-	
+
 function createButton(){
 	if(localStorage.eventNames){
 	var events =localStorage.eventNames;
@@ -280,9 +285,9 @@ function createButton(){
 		if(name!="")
 		{ButtonEmpty=false;
 			addButton(name,events[i],table);
-			
+
 			}
-	
+
 	}
 	if(ButtonEmpty)
 	{
@@ -291,16 +296,16 @@ function createButton(){
 	addListners();
 	re();
 	}else{
-		
+
 		whenButtonEmpty();
 	}
 
-	
-	
+
+
 	}createButton();
 
     var fired = [];
-    
+
 
 function left(){
 var d=$("#status").attr("order")-1;
@@ -320,7 +325,7 @@ function insertStatus(d){
 		var sp='<span id="failed" style="color:#D50000">';
 			$("#status").html(sp+ac+"] "+"Failed "+stat+" ["+ac+"</span>");
 	}
-	
+
 
 $("#status").attr("order",d);}
 
@@ -355,7 +360,11 @@ function updateStatus(sta,name){
 $("#status").attr("order",ord);
 var ac=ord+1;
 if(sta)
-{$("#status").html(ac+"] "+"Fired "+fired[ord]+" ["+ac);
+{
+  $("#status").html(ac+"] "+"Fired "+fired[ord]+" ["+ac);
+var trig = fired[ord] + "_is_triggered";
+var final = trig.replace(/_/g," ");
+chrome.tts.speak( final ,{ 'gender' : 'female','rate' : 1.0 });
 }else{
 	fired[ij]=name+"*";
 	var sp='<span id="failed" style="color:#D50000">';
@@ -368,12 +377,12 @@ function goToEdit(ButtonName){
 	/* $("#alertBoxOuter").css("display","none"); */
 	removeShowAlert();
 	$("[id='editButton'][name='"+ButtonName+"']").click();
-	
-	
+
+
 }
 function addGoToButtonEventListener(nameData){
 	$("#gotoButton").click(function(){
-				
+
 				goToEdit(nameData);
 				removeShowAlert();
 				});
@@ -399,10 +408,10 @@ console.log("req data",request_data);
         $.post(request_url, request_data).done(function( data) {
 			console.log(butc);
 			butc.find('img').eq(0).remove();
-			 
+
            updateStatus(true,nameData[0]);
-		   
-        }).fail(function(xhr) {	
+
+        }).fail(function(xhr) {
 		butc.find('img').eq(0).remove();
 		if(xhr.status==401){
 			var mg='<div style="height: 126px;width:100%;/* width: 274px */margin-top: -64px;margin-left: -50%;position: absolute;top: 50%;left: 50%;background: white;"><div><p style="color:red;position: relative;top: 4px;text-align: center;">Incorrect key</p><button id="gotoButton" class="button button-3d"  style="margin-left: 14px;font-size: inherit;width: 90%;/* left: 10%; */padding-left: 14px;padding-right: 14px;">change key</button></div></div>'
@@ -410,20 +419,20 @@ console.log("req data",request_data);
 			addGoToButtonEventListener(nameData[0]);
 		}
 		else{
-              
+
 			console.log(request_data);
 			updateStatus(false,nameData[0]);
-			
+
 			var mg='<div style="height: 126px;width:100%;/* width: 274px */margin-top: -64px;margin-left: -50%;position: absolute;top: 50%;left: 50%;background: white;"><div><button id="tryAfterSomeTime" class="button button-3d" style="font-size: inherit;width: 90%; margin-top: 6px; margin-left: 14px;">please try after sometime</button><p style="position: relative;top: 4px;text-align: center;">(OR)</p><button id="gotoButton" class="button button-3d"  style="margin-left: 14px;font-size: inherit;width: 90%;/* left: 10%; */padding-left: 14px;padding-right: 14px;">check the event</button></div></div>';
-			
-			
-			
-			
+
+
+
+
 			showAlert(mg);
 			$("#tryAfterSomeTime").click(function(){removeShowAlert();});
 			addGoToButtonEventListener(nameData[0]);
-			
-            
+
+
         }});
 },true);
 
@@ -437,5 +446,3 @@ console.log("req data",request_data);
     {
         return "https://maker.ifttt.com/trigger/" + name + "/with/key/"+localStorage.Mkey;
     }
-	
-	
