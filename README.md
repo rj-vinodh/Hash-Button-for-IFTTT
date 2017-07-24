@@ -1,4 +1,4 @@
-# IFTTT-Chrome-Buttons
+# Chrome-Buttons-for-IFTTT
 This extension's functionality is same as that of an IFTTT DO button but in chrome
 ## How to install ?
 * [Click on **ADD TO CHROME**](https://chrome.google.com/webstore/detail/ifttt-chrome-button-unoff/komgjgehifckemhnghbjkecolfamhhpb)
