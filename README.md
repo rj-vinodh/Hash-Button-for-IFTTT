@@ -1,10 +1,10 @@
-#### IFTTT Chrome Button Intresting Tips
+#### Chrome Button for IFTTT - Intresting Tips
 * [makeuseof.com 9-easy-ifttt-button-tricks-quickly-automate-life](http://www.makeuseof.com/tag/9-easy-ifttt-button-tricks-quickly-automate-life/)
 * [gizmodo.com 15-clever-recipes-to-try-with-ifttts-new-do-apps-1686946276](http://fieldguide.gizmodo.com/15-clever-recipes-to-try-with-ifttts-new-do-apps-1686946276)
 
-## How to setup IFTTT Chrome Button, a Chrome Extension for IFTTT - unofficial ?
+## How to setup Chrome Button for IFTTT, a Chrome Extension for IFTTT - unofficial ?
 
-## Install IFTTT Chrome Button
+## Install Chrome Button for IFTTT
 * [Click on **ADD TO CHROME**](https://chrome.google.com/webstore/detail/ifttt-chrome-button-unoff/komgjgehifckemhnghbjkecolfamhhpb)
 * Click on **Add extension**
 
