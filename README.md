@@ -4,7 +4,7 @@
 
 ## How to setup Chrome Button for IFTTT, a Chrome Extension for IFTTT - unofficial ?
 
-## Install Chrome Button for IFTTT
+## Install Chrome Button for IFTTT - unofficial
 * [Click on **ADD TO CHROME**](https://chrome.google.com/webstore/detail/chrome-button-for-ifttt-u/komgjgehifckemhnghbjkecolfamhhpb)
 * Click on **Add extension**
 
