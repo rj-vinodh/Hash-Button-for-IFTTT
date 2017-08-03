@@ -63,7 +63,7 @@ $("#key").val((localStorage.Mkey||""));
 
 $("[id='howToButton']").click(function(event){
 	
-	chrome.tabs.create({ url: "https://rj-vinodh.github.io/Chrome-Buttons-for-IFTTT/" })
+	chrome.tabs.create({ url: "https://rj-vinodh.github.io/Hash-Button-for-IFTTT/" })
 	
 	
 });

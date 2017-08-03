@@ -1,9 +1,9 @@
 ﻿{
   "manifest_version": 2,
 
-  "name": "Chrome Button for IFTTT - unofficial",
-  "description": "This extension's functionality is same as that of an IFTTT DO button but in chrome,we are not affiliated with IFTTT.",
-  "version": "1.6",
+  "name": "Hash Button for IFTTT - unofficial",
+  "description": "This extension's functionality is same as that of an IFTTT DO button but in chrome, we are not affiliated with IFTTT.",
+  "version": "1.7",
 
   "browser_action": {
   "default_icon": "appicon.png",
