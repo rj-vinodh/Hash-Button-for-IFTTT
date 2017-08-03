@@ -5,7 +5,7 @@
 ## How to setup Hash Button for IFTTT, a Chrome Extension for IFTTT - unofficial ?
 
 ## Install Hash Button for IFTTT - unofficial
-* [Click on **ADD TO CHROME**](https://chrome.google.com/webstore/detail/chrome-button-for-ifttt-u/komgjgehifckemhnghbjkecolfamhhpb)
+* [Click on **ADD TO CHROME**](https://chrome.google.com/webstore/detail/hash-button-for-ifttt-uno/komgjgehifckemhnghbjkecolfamhhpb)
 * Click on **Add extension**
 
 ## How to setup IFTTT Webhooks channel ?
