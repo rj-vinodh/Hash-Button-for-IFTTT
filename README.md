@@ -1,4 +1,4 @@
-# Chrome-Button-for-IFTTT - unofficial
+# Hash-Button-for-IFTTT - unofficial
 This extension's functionality is same as that of an IFTTT DO button but in chrome
 ## How to install ?
 * [Click on **ADD TO CHROME**](https://chrome.google.com/webstore/detail/chrome-button-for-ifttt-u/komgjgehifckemhnghbjkecolfamhhpb)
