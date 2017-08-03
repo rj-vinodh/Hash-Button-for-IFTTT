@@ -1,6 +1,6 @@
 theme: jekyll-theme-cayman
-title: Chrome Button for IFTTT
-description: "A Chrome Extension for IFTTT - unofficial, This extension's functionality is same as that of an IFTTT DO button but in chrome"
+title: Hash Button for IFTTT
+description: "A Chrome Extension for IFTTT - unofficial, This extension's functionality is same as that of an IFTTT DO button but in chrome, We are not affiliated to IFTTT"
 google_analytics: UA-67475585-2
 gems:
   - jekyll-seo-tag
