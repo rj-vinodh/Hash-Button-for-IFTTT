@@ -1,4 +1,5 @@
 #### Hash Button for IFTTT - Intresting Tips
+* [Schedule a Phone Call to Yourself and Politely Escape any Boring Situation](https://www.labnol.org/internet/schedule-phone-call/30453/)
 * [makeuseof.com 9-easy-ifttt-button-tricks-quickly-automate-life](http://www.makeuseof.com/tag/9-easy-ifttt-button-tricks-quickly-automate-life/)
 * [gizmodo.com 15-clever-recipes-to-try-with-ifttts-new-do-apps-1686946276](http://fieldguide.gizmodo.com/15-clever-recipes-to-try-with-ifttts-new-do-apps-1686946276)
 
