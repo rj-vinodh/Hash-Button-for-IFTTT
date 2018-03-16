@@ -11,68 +11,115 @@ void 0===c?d&&"get"in d&&null!==(e=d.get(a,b))?e:(e=n.find.attr(a,b),null==e?voi
 var innerDiv=$("<div/>");
  var styEdit = $("<style/>");
 var styDelete = $("<style/>");
+var temp="";
+var canceled = false;
+var edit_clicked = false;
+function getFromSync(key,callback) {
+  // See https://developer.chrome.com/apps/storage#type-StorageArea. We check
+  // for chrome.runtime.lastError to ensure correctness even when the API call
+  // fails.
+  if (!localStorage.firstSync){
+
+    if (localStorage.Mkey){setToSync('Mkey',localStorage.Mkey);}
+    if(localStorage.eventNames){setToSync('eventNames',localStorage.eventNames);}
+    localStorage.firstSync = 'true'
+  }
+  chrome.storage.sync.get(key, (items) => {
+    callback(chrome.runtime.lastError ? "" : (items[key]||""));
+  });
+}
+
+function setToSync(key, value) {
+  var items = {};
+  items[key] = value;
+  // See https://developer.chrome.com/apps/storage#type-StorageArea. We omit the
+  // optional callback since we don't need to perform any action once the
+  // background color is saved.
+  chrome.storage.sync.set(items);
+}
+
+function cancelButtonEH(){
+	canceled=true;
+  if(edit_clicked){
+	  save();
+	  console.log(" cancel button if temp is empty ")
+   
+	
+  }else
+  { switchView();
+canceled= false;
+	  }
+  // switchView();
+
+
+}
+
 function createStyleEditTd(){
 
 	styEdit.attr('id','ed');
 	styEdit.html("td#editTd{display:none}");
 	$('head').append(styEdit);
 	console.log(styEdit);
-	
+
 }createStyleEditTd();
 function createStyleDeleteTd(){
 styDelete.attr('id','ed');
-	
+
 	styDelete.html("td#deleteTd{display:none}");
 $('head').append(styDelete);
 console.log(styDelete);
 }createStyleDeleteTd();
 $("#saveBtn").on("click",save);
-$("#cancelSaveBtn").on("click",switchView);
+$("#cancelSaveBtn").on("click",cancelButtonEH);
 var ai=1;//for showing and hiding edit button
 var aid=1;//for showing and hiding delete button
 $("#WholeEdit").click(function(){
-	
+
 	if(ai%2!=0){
 	styEdit.html("td#editTd{display:table-cell}");
-	
+
 	}else{
 		styEdit.html("td#editTd{display:none}");
-		
+
 	}
-	
+
 	++ai;
 	});
 $("#WholeDelete").click(function(){
-	
+
 	if(aid%2!=0){
 	styDelete.html("td#deleteTd{display:table-cell}");
 	}else{
 		styDelete.html("td#deleteTd{display:none}");
-		
+
 	}
 	++aid;
-	
+
 	});
 $("#addButtons").on("click",function(){
 	switchView();
 	clear();
-	
 
-$("#key").val((localStorage.Mkey||""));
+getFromSync("Mkey",(items) => {
+  $("#key").val(items || "");
+});
+
+
+
 });
 
 $("[id='howToButton']").click(function(event){
-	
+
 	chrome.tabs.create({ url: "https://rj-vinodh.github.io/Hash-Button-for-IFTTT/" })
-	
-	
+
+
 });
 function clear(){
-	
+
 $("#event_name_input").val("");
 	$("#value1").val("");
 	$("#value2").val("");
-	$("#value3").val("");	
+	$("#value3").val("");
 }
 
 
@@ -80,23 +127,50 @@ $("#event_name_input").val("");
 
 function removeShowAlert(){
 $("body").find("#alertBoxOuter")[0].remove();
-	
+
 }
 
 function save(){
-	var key=$("#key").val();
+	console.log(temp);
+	console.log("saving");
+	console.log(canceled,edit_clicked,temp);
+	
+
+  if (edit_clicked && canceled)
+	{
+    var n=temp.split("?");
+    temp = "";
+    //alert("n :"+n[1]);
+    var va=n[1].split(')');
+    $("#event_name_input").val(n[0]);
+    $("#value1").val(va[0]);
+    $("#value2").val(va[1]);
+    $("#value3").val(va[2]);
+	$("#key").val(tempKey);
+	canceled = false;
+	edit_clicked = false;
+
+  }
+  var key=$("#key").val();
 	var eventName=$("#event_name_input").val();
+
 	if(key!=""&&eventName!="")
-	{localStorage.Mkey=$("#key").val();
+	{
+
+
+    setToSync('Mkey',key);
 	//alert("local Storage :"+localStorage.eventNames)
-	
-	localStorage.eventNames=(localStorage.eventNames||"")+"("+eventName+"?"+$("#value1").val()
-	+")"+$("#value2").val()+")"+$("#value3").val();
-	createButton();
-	clear();
-	switchView();
-	
-	
+  getFromSync("eventNames",(eventNames)=>{
+    setToSync('eventNames',(eventNames)+"("+eventName+"?"+$("#value1").val()
+    +")"+$("#value2").val()+")"+$("#value3").val());
+    createButton();
+    clear();
+    switchView();
+
+  });
+
+
+
 	}else{
 		var emptyField=(key!="")?"fill Event name":"fill key";
 		var mg='<div style="height: 126px;width: 100%;margin-top: -64px;margin-left: -50%;position: absolute;top: 50%;left: 50%;background: white;"><div><button id="mandatory" class="button button-3d" style="font-size: inherit;width: 90%; margin-top: 6px; margin-left: 10px;">'+emptyField+'</button><p style="position: relative;top: 4px;text-align: center;">(OR)</p><button id="HowToB" class="button button-3d"  style="margin-left: 10px;font-size: inherit;width: 90%;/* left: 10%; */padding-left: 14px;padding-right: 14px;">How to Get...!</button></div></div>';
@@ -110,17 +184,17 @@ function save(){
 			}else{
 				$("#key").focus();
 				$("#key").val("");
-				
+
 			}
 			removeShowAlert();
 			});
-		
-		
+
+
 		//alert(" Event Name and Key are mandatory fields, please fill ");
 	}
 }
 function addEventHowToButtonPress(){
-	
+
 	$("#HowToB").click(function(){
 			$("#howToButton").click();removeShowAlert();});
 }
@@ -134,7 +208,7 @@ function switchView(){
 	}else{
 	$("#options").attr("style", "");
 	$("#frontPage").attr("style", "display:none")
-	
+
 	}
 }
 function clear(){
@@ -142,7 +216,7 @@ function clear(){
 }
 
 function re(){
-	
+
  $("[id='deleteButton']").click(confirmDelete );
 
 $("[id='editButton']").click(function(event){editButton(event)});
@@ -150,7 +224,7 @@ $("[id='editButton']").click(function(event){editButton(event)});
 
 
 
- 
+
 }
 function confirmDelete(){
 	tar=$(this);
@@ -159,30 +233,47 @@ var di = d.createElement('div');
       di.id = "delConfirm";
       di.name = tar.val();
 	  di.innerHTML='<i id="'+tar.val()+'" class="del material-icons m-t-5">delete</i><i id="cancel"class="material-icons m-t-5">cancel</i>';
-tar.append(di); 
+tar.append(di);
 $(".del").click(function(event){
 	console.log(event.target.value);
+  console.log('del actual clicked');
 	removeButton(event.target.id);
- createButton();
+
  event.stopPropagation(); });
   $("[id='cancel']").click(function(event){
 	  console.log(tar);
 	  event.target.parentElement.parentElement.removeChild(di);
-	  event.stopPropagation() ; });	
+	  event.stopPropagation() ; });
 }
 
+function tempRemoveButton(eventData){
+  console.log(eventData);
+  getFromSync('eventNames',(eventNames)=>{
+    var everything=eventNames;
+    setToSync('eventNames',everything.replace('('+eventData, ""));
+    	console.log("removed");
+      // createButton();
+
+  });
+
+}
 
 function removeButton(eventData){
-	
+
 	console.log(eventData);
-var everything=localStorage.eventNames;
-localStorage.eventNames=everything.replace(eventData, "");
-	console.log("removed");
+  getFromSync('eventNames',(eventNames)=>{
+    var everything=eventNames;
+    setToSync('eventNames',everything.replace('('+eventData, ""));
+    	console.log("removed");
+      createButton();
+
+  });
+
 }
 function editButton(event){
-	
+console.log('pressed edit button');
 switchView();
-var temp;
+console.log(event);
 if(event.target.value)
 {
 	tempTar=event.target;}
@@ -190,28 +281,34 @@ else{
 	tempTar=event.target.parentElement;
 }
 temp=tempTar.value;
-removeButton(temp);
+tempRemoveButton(temp);
 
 //alert(temp);
 var n=temp.split("?");
+// temp = "";
 //alert("n :"+n[1]);
 var va=n[1].split(')');
 $("#event_name_input").val(n[0]);
-$("#value1").val(va[0]);	
-$("#value2").val(va[1]);	
+$("#value1").val(va[0]);
+$("#value2").val(va[1]);
 $("#value3").val(va[2]);
-$("#key").val(localStorage.Mkey);
-	
+getFromSync("Mkey",(Mkey)=>{
+
+  $("#key").val(Mkey);
+  tempKey = Mkey;
+})
+edit_clicked = true;
+
 }
 
 
 function addButton(name,values,table){
-	
+
 	   var row = $(table[0].insertRow(-1));
 	/* alert("name "+name);
 	alert("values "+values); */
 	if(name!=""){
-	
+
       var f = d.createElement('button');
       f.id = "actionButton";
       f.value = values;
@@ -219,7 +316,7 @@ function addButton(name,values,table){
 	  f.className="button  button-rounded button button-3d fullWidthBtn";
 	   var cell = $("<td />");
 	   cell.css("width", "100%");
-	   
+
                 cell.append(f);
 				row.append(cell);
 	  var e=d.createElement('button');
@@ -244,19 +341,20 @@ function addButton(name,values,table){
 	  console.log(cellDelete);
 	  cellDelete.append(db);
 	   row.append(cellDelete);
-	   
+
 	   $("#buttons").append(table);
 	    }
 }
 
 
 $("#moveLeft").click( function (){left()});
-	
+
 	$("#moveRight").click( function (){right()});
-	
+
 
 function whenButtonEmpty(){
 	
+$("#buttons").html("");
 	switchView();
 		var ma='<div style="height: 126px;width: 100%;margin-top: -64px;margin-left: -50%;position: absolute;top: 50%;left: 50%;background: white;"><div><button id="HowToB" class="button button-3d"  style="margin-left: 10px;font-size: inherit;width: 90%;/* left: 10%; */padding-left: 14px;padding-right: 14px;">Easy tutorial...!</button><p style="position: relative;top: 4px;text-align: center;">(OR)</p><button id="Ihave" class="button button-3d" style="padding-right: 5.6px;padding-left: 5.6px;font-size: inherit;width: 90%;margin-top: 6px;margin-left: 10px;padding-right: 10.6;padding-left: 5.6;">I have key & Event Name</button></div></div>';
 		showAlert(ma);
@@ -267,62 +365,82 @@ function whenButtonEmpty(){
 
 
 
-	
-function createButton(){
-	if(localStorage.eventNames){
-	var events =localStorage.eventNames;
-	 events=events.split("(");
-	document.getElementById("buttons").innerHTML="";
-	var table = $("<table />");
-	var ButtonEmpty=true;
-	for(i=1;i<events.length;i++){
-		var name=events[i].split("?")[0];
-		if(name!="")
-		{ButtonEmpty=false;
-			addButton(name,events[i],table);
-			
-			}
-	
-	}
-	if(ButtonEmpty)
-	{
-		whenButtonEmpty();
-}
-	addListners();
-	re();
-	}else{
-		
-		whenButtonEmpty();
-	}
 
+function createButton(){
+  getFromSync('eventNames',(items) => {
+	  console.log(items,'items')
+    if(items){
+      console.log(items);
+    var events =items;
+     events=events.split("(");
+    document.getElementById("buttons").innerHTML="";
+    var table = $("<table />");
+    var ButtonEmpty=true;
+    for(i=1;i<events.length;i++){
+      var name=events[i].split("?")[0];
+      if(name!="")
+      {ButtonEmpty=false;
+        addButton(name,events[i],table);
+
+        }
+
+    }
+    if(ButtonEmpty)
+		
+    { console.log("i to button empty");
 	
-	
+      whenButtonEmpty();
+    }
+    addListners();
+    re();
+    }else{
+		
+      whenButtonEmpty();
+    }
+
+
+
+  });
+
+
+
 	}createButton();
 
     var fired = [];
-    
+
 
 function left(){
 var d=$("#status").attr("order")-1;
 
 insertStatus(d);
 }
+
+
 function insertStatus(d){
 	if(d<fired.length&&d>(-1))
-{$("#status").fadeOut(20);
-	fired=JSON.parse(localStorage.fired);
-	$("#status").fadeIn(10);
-	var ac=d+1;
-	var stat=fired[d];
-	if(stat.indexOf("*") == -1)
-	{$("#status").html("["+ac+"] "+"Fired "+stat+" ["+ac+"]");
-	}else{
-		var sp='<span id="failed" style="color:#D50000">';
-			$("#status").html(sp+ac+"] "+"Failed "+stat+" ["+ac+"</span>");
-	}
-	
+{
 
-$("#status").attr("order",d);}
+  $("#status").fadeOut(20);
+  getFromSync('fired',(fired)=>{
+
+    if(fired){$("#status").fadeIn(10);
+    var ac=d+1;
+    var stat=fired[d];
+    if(stat.indexOf("*") == -1)
+    {$("#status").html("["+ac+"] "+"Fired "+stat+" ["+ac+"]");
+    }else{
+      var sp='<span id="failed" style="color:#D50000">';
+        $("#status").html(sp+ac+"] "+"Failed "+stat+" ["+ac+"</span>");
+    }
+
+
+  $("#status").attr("order",d);}
+  })
+	// fired=JSON.parse(localStorage.fired);
+
+
+
+}
 
 }
 function right(){
@@ -362,18 +480,18 @@ if(sta)
 			$("#status").html(sp+ac+"] "+"Failed "+fired[ord]+" ["+ac+"</span>");
 }
 ++ij;
-localStorage.setItem("fired", JSON.stringify(fired));
+setToSync("fired", fired);
 }
 function goToEdit(ButtonName){
 	/* $("#alertBoxOuter").css("display","none"); */
-	removeShowAlert();
+	// removeShowAlert();
 	$("[id='editButton'][name='"+ButtonName+"']").click();
-	
-	
+
+
 }
 function addGoToButtonEventListener(nameData){
 	$("#gotoButton").click(function(){
-				
+
 				goToEdit(nameData);
 				removeShowAlert();
 				});
@@ -387,44 +505,50 @@ ad[i].addEventListener("click", function(event){
 	$(this).append(im);
 	var eventData=$(this).val();
 var nameData=eventData.split("?");
-        var request_url = get_trigger_url(nameData[0]);
-console.log("request url",request_url);
-        var dat = nameData[1].split(")");
-		var request_data = {
-            value1 : dat[0],
-            value2 : dat[1],
-            value3 : dat[2]
-        };
-console.log("req data",request_data);
-        $.post(request_url, request_data).done(function( data) {
-			console.log(butc);
-			butc.find('img').eq(0).remove();
-			 
-           updateStatus(true,nameData[0]);
-		   
-        }).fail(function(xhr) {	
-		butc.find('img').eq(0).remove();
-		if(xhr.status==401){
-			var mg='<div style="height: 126px;width:100%;/* width: 274px */margin-top: -64px;margin-left: -50%;position: absolute;top: 50%;left: 50%;background: white;"><div><p style="color:red;position: relative;top: 4px;text-align: center;">Incorrect key</p><button id="gotoButton" class="button button-3d"  style="margin-left: 14px;font-size: inherit;width: 90%;/* left: 10%; */padding-left: 14px;padding-right: 14px;">change key</button></div></div>'
-			showAlert(mg);
-			addGoToButtonEventListener(nameData[0]);
-		}
-		else{
-              
-			console.log(request_data);
-			updateStatus(false,nameData[0]);
-			
-			var mg='<div style="height: 126px;width:100%;/* width: 274px */margin-top: -64px;margin-left: -50%;position: absolute;top: 50%;left: 50%;background: white;"><div><button id="tryAfterSomeTime" class="button button-3d" style="font-size: inherit;width: 90%; margin-top: 6px; margin-left: 14px;">please try after sometime</button><p style="position: relative;top: 4px;text-align: center;">(OR)</p><button id="gotoButton" class="button button-3d"  style="margin-left: 14px;font-size: inherit;width: 90%;/* left: 10%; */padding-left: 14px;padding-right: 14px;">check the event</button></div></div>';
-			
-			
-			
-			
-			showAlert(mg);
-			$("#tryAfterSomeTime").click(function(){removeShowAlert();});
-			addGoToButtonEventListener(nameData[0]);
-			
-            
-        }});
+
+        getFromSync('Mkey',(Mkey)=> {
+
+var request_url = get_trigger_url(nameData[0],Mkey);
+          console.log("request url",request_url);
+                var dat = nameData[1].split(")");
+        		var request_data = {
+                    value1 : dat[0],
+                    value2 : dat[1],
+                    value3 : dat[2]
+                };
+        console.log("req data",request_data);
+                $.post(request_url, request_data).done(function( data) {
+        			console.log(butc);
+        			butc.find('img').eq(0).remove();
+
+                   updateStatus(true,nameData[0]);
+
+                }).fail(function(xhr) {
+        		butc.find('img').eq(0).remove();
+        		if(xhr.status==401){
+        			var mg='<div style="height: 126px;width:100%;/* width: 274px */margin-top: -64px;margin-left: -50%;position: absolute;top: 50%;left: 50%;background: white;"><div><p style="color:red;position: relative;top: 4px;text-align: center;">Incorrect key</p><button id="gotoButton" class="button button-3d"  style="margin-left: 14px;font-size: inherit;width: 90%;/* left: 10%; */padding-left: 14px;padding-right: 14px;">change key</button></div></div>'
+        			showAlert(mg);
+        			addGoToButtonEventListener(nameData[0]);
+        		}
+        		else{
+
+        			console.log(request_data);
+        			updateStatus(false,nameData[0]);
+
+        			var mg='<div style="height: 126px;width:100%;/* width: 274px */margin-top: -64px;margin-left: -50%;position: absolute;top: 50%;left: 50%;background: white;"><div><button id="tryAfterSomeTime" class="button button-3d" style="font-size: inherit;width: 90%; margin-top: 6px; margin-left: 14px;">please try after sometime</button><p style="position: relative;top: 4px;text-align: center;">(OR)</p><button id="gotoButton" class="button button-3d"  style="margin-left: 14px;font-size: inherit;width: 90%;/* left: 10%; */padding-left: 14px;padding-right: 14px;">check the event</button></div></div>';
+
+
+
+
+        			showAlert(mg);
+        			$("#tryAfterSomeTime").click(function(){removeShowAlert();});
+        			addGoToButtonEventListener(nameData[0]);
+
+
+                }});}  )
+
+
+
 },true);
 
 	}
@@ -433,9 +557,8 @@ console.log("req data",request_data);
 
 
 
-	function get_trigger_url(name)
+	function get_trigger_url(name,Mkey)
     {
-        return "https://maker.ifttt.com/trigger/" + name + "/with/key/"+localStorage.Mkey;
+
+        return "https://maker.ifttt.com/trigger/" + name + "/with/key/"+Mkey;
     }
-	
-	
